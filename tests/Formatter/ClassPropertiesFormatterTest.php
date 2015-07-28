@@ -22,7 +22,7 @@ class ClassPropertiesFormatterTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->serializer = Mockery::mock(PropertySerializer::class);
+        $this->serializer = Mockery::mock('League\Tactician\Logger\PropertySerializer\PropertySerializer');
         $this->serializer->shouldReceive('encode')->andReturn('!!!');
 
         $this->formatter = new ClassPropertiesFormatter($this->serializer);
@@ -55,7 +55,7 @@ class ClassPropertiesFormatterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             'Command failed: League\Tactician\Logger\Tests\Fixtures\RegisterUserCommand !!! ' .
-            'threw the exception ' . UserAlreadyExistsException::class. ' (foo bar)',
+            'threw the exception League\Tactician\Logger\Tests\Fixtures\UserAlreadyExistsException (foo bar)',
             $this->formatter->commandFailed($command, $exception)
         );
     }

@@ -34,9 +34,9 @@ class LoggerMiddlewareTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->logger = Mockery::mock(LoggerInterface::class);
+        $this->logger = Mockery::mock('Psr\Log\LoggerInterface');
 
-        $this->formatter = Mockery::mock(Formatter::class);
+        $this->formatter = Mockery::mock('League\Tactician\Logger\Formatter\Formatter');
 
         $this->middleware = new LoggerMiddleware(
             $this->formatter,

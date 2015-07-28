@@ -20,7 +20,7 @@ class ClassNameFormatterTest extends \PHPUnit_Framework_TestCase
     public function testCommandSuccessCreatesExpectedMessage()
     {
         $this->assertEquals(
-            'Command succeeded: ' . RegisterUserCommand::class,
+            'Command succeeded: League\Tactician\Logger\Tests\Fixtures\RegisterUserCommand',
             $this->formatter->commandHandled(new RegisterUserCommand())
         );
     }
@@ -28,7 +28,7 @@ class ClassNameFormatterTest extends \PHPUnit_Framework_TestCase
     public function testCommandReceivedCreatesExpectedMessage()
     {
         $this->assertEquals(
-            'Command received: ' . RegisterUserCommand::class,
+            'Command received: League\Tactician\Logger\Tests\Fixtures\RegisterUserCommand',
             $this->formatter->commandReceived(new RegisterUserCommand())
         );
     }
@@ -37,7 +37,7 @@ class ClassNameFormatterTest extends \PHPUnit_Framework_TestCase
     {
         $exception = new UserAlreadyExistsException("foo bar baz");
 
-        $expectedMessage = 'Command failed: ' . RegisterUserCommand::class . ' threw the exception '
+        $expectedMessage = 'Command failed: League\Tactician\Logger\Tests\Fixtures\RegisterUserCommand threw the exception '
             . UserAlreadyExistsException::class . ' (foo bar baz)';
 
         $this->assertEquals(
